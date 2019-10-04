@@ -160,7 +160,7 @@
     <div id="results-modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-            <!-- Modal content-->
+            <!--Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -188,6 +188,7 @@
 
     <!--Script will take info upon submission-->
     <script type="text/javascript">
+
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
@@ -208,18 +209,22 @@
                 ]
             };
 
-            $.post("/api/friends", newFriend)
-                .then(function (data) {
-                    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                    $("#matchName").text(data.name);
-                    $('#matchImg').attr("src", data.photo);
-                    // Show the modal with the best match 
-                    $("#resultsModal").modal('show');
+            $.post("/api/friends", newFriend, function (data) {
+
+                    //Data is friends[smallestIndex]
+                    console.log(data)
+
+                    //Writes name and photo to modal
+                    $("#match-name").text(data.name);
+                    $('#match-img').attr("src", data.photo);
+
+                    //Shows modal
+                    $("#results-modal").modal('show');
                 });
 
-            $('#resultsModal').on('hidden.bs.modal', function (e) {
-                // do something...
-                // similar behavior as an HTTP redirect
+            $('#results-modal').on('hidden.bs.modal', function (e) {
+                
+                // similar behavior as an HTTP redirect to bring back to home page after seeing friend modal
                 window.location.replace("/");
             })
 

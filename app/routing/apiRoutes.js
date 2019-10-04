@@ -39,7 +39,6 @@ module.exports = function (app) {
             //Once looped through all the scores for one friend, push into array before moving to next friend
             differenceArray.push(differenceTotal)
         }
-        console.log(differenceArray)
 
         var smallestIndex = 0;
         //Loop through differece Array to see which is smallest
