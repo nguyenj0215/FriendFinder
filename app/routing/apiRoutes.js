@@ -46,11 +46,11 @@ module.exports = function (app) {
         for (var h = 0; h < differenceArray.length; h++) {
             //Save first number in array as smallest index
             if (h === 0) {
-                smallestIndex = differenceArray[h]
+                smallestIndex = h
             }
             //Continue through difference array to find any smaller numbers
             else if (differenceArray[h] < smallestIndex) {
-                smallestIndex = differenceArray[h]
+                smallestIndex = h
             }
         }
 
