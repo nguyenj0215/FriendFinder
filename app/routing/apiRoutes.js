@@ -21,13 +21,16 @@ module.exports = function (app) {
 
         //Array that will contain difference total values 
         var differenceArray = []
-        //Total difference summed at each index
-        var differenceTotal = 0;
-        //To be used at each index to add to differenceTotal
-        var differenceCurrent;
 
         //For loop through friends array
         for (var j = 0; j < friends.length; j++) {
+
+            //Resets at each friend
+            
+            //Total difference summed at each index
+            var differenceTotal = 0;
+            //To be used at each index to add to differenceTotal
+            var differenceCurrent = 0;
 
             //For loop for each friends scores (no need to parseint already int in friends.js)
             for (var k = 0; k < friends[j].scores.length; k++) {
@@ -39,17 +42,21 @@ module.exports = function (app) {
             //Once looped through all the scores for one friend, push into array before moving to next friend
             differenceArray.push(differenceTotal)
         }
+        console.log(differenceArray)
 
-        var smallestIndex = 0;
+        var smallestIndex;
+        var smallestIndexNum;
         //Loop through differece Array to see which is smallest
         for (var h = 0; h < differenceArray.length; h++) {
             //Save first number in array as smallest index
             if (h === 0) {
                 smallestIndex = h
+                smallestIndexNum = differenceArray[h]
             }
             //Continue through difference array to find any smaller numbers
-            else if (differenceArray[h] < smallestIndex) {
+            else if (differenceArray[h] < smallestIndexNum) {
                 smallestIndex = h
+                smallestIndexNum = differenceArray[h]
             }
         }
 
