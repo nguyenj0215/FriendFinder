@@ -192,6 +192,8 @@
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
+            //May want to add validation here
+
             var newFriend = {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
@@ -215,7 +217,7 @@
                     console.log(data)
 
                     //Writes name and photo to modal
-                    $("#match-name").text(data.name);
+                    $("#match-").text(data.name);
                     $('#match-img').attr("src", data.photo);
 
                     //Shows modal
